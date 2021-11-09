@@ -1,8 +1,64 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<Product>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    ViewData["Title"] = "Home Page";
+   
+
+}
+<div class="row">
+    <div class="col-12">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="#">
+                        <img class="img-responsive" src="~/images/carousal/1627897605NutrelaBanner2.jpg" />
+                    </a>
+
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img class="img-responsive" src="~/images/carousal/1631864643BannerChyawanprash.jpg" />
+                    </a>
+
+                </div>
+                <div class="carousel-item">
+                    <a href="#">
+                        <img class="img-responsive" src="~/images/carousal/1634622929FoodBarBanner2.jpg" />
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+<br />
+
+<div class="row">
+
+
+    @foreach (var product in Model)
+    {
+    <div class="col-3">
+        @{
+            var imagePath = "/images/ProductImages/" + product.ProductImagePath;
+        }
+        <div class="card text-center" style="width:300px">
+            <a asp-controller="Product" asp-action="GetProduct" asp-route-productId="@product.ProductId">
+                <img class="card-img-top" src=@imagePath />
+            </a>
+
+            <div class="card-body">
+
+                <h5 class="card-title">@product.Name @product.MRP</h5>
+
+
+            </div>
+        </div>
+    </div>
+            }
+
+
+
+    </div>

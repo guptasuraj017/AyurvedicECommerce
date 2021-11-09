@@ -1,0 +1,106 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Product Page";
+    var imagePath = "/images/ProductImages/" + Model.ProductImagePath;
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <img src=@imagePath />
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <h3>@Model.Name <span>@Model.MRP</span> </h3>
+            </div>
+            <div class="row">
+                <h1>By: @Model.Seller</h1>
+            </div>
+            <div class="row">
+                <p>@Model.Description</p>
+            </div>
+            <div class="row">
+                @{
+                    if (Model.InStock)
+                    {
+                        <h5><span>In Stock</span></h5>
+                    }
+                    else
+                    {
+                        <h5><span>Out Of Stock</span></h5>
+                    }
+                }
+
+            </div>
+            <div class="row">
+                <h4><span>MRP: @Model.MRP</span></h4>
+            </div>
+            <div class="row">
+
+                <button class="btn btn-success "><span>Add to Cart</span></button>
+
+                <button class="btn btn-primary ml-2"><span>Buy Now</span></button>
+
+
+                <button class="btn btn-secondary ml-2"><span>Add to Wishlist</span></button>
+
+            </div>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+
+    <div class="mt-4" id="accordion">
+        <div class="card">
+            <div class="card-header">
+                <a class="card-link" data-toggle="collapse" href="#benefits">
+                    <span>Benefits</span>
+                </a>
+            </div>
+            <div id="benefits" class="collapse " data-parent="#accordion">
+                <div class="card-body">
+                    <p>@Model.Benefits</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <a class="card-link" data-toggle="collapse" href="#ingredients">
+                    <span>Ingredients</span>
+                </a>
+            </div>
+            <div id="ingredients" class="collapse " data-parent="#accordion">
+                <div class="card-body">
+                    <p>@Model.Ingredients</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <a class="card-link" data-toggle="collapse" href="#howToUse">
+                    <span>How to use</span>
+                </a>
+            </div>
+            <div id="howToUse" class="collapse " data-parent="#accordion">
+                <div class="card-body">
+                    <p>@Model.HowToUse</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <a class="card-link" data-toggle="collapse" href="#otherProductInfo">
+                    <span>Other Product Info Info</span>
+                </a>
+            </div>
+            <div id="otherProductInfo" class="collapse " data-parent="#accordion">
+                <div class="card-body">
+                    <p>@Model.OtherProductInfo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

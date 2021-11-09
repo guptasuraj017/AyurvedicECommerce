@@ -1,4 +1,5 @@
 ﻿using AyurvedicECommerce.Models;
+using AyurvedicECommerce.Models.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,18 @@ namespace AyurvedicECommerce.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductRepositery _productRepositery;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, IProductRepositery productRepositery)
         {
+            _productRepositery = productRepositery;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_productRepositery.GetProducts());
         }
 
         public IActionResult Privacy()

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace AyurvedicECommerce.Models.Product
 {
-    interface IProductRepositery
+    public interface IProductRepositery
     {
         public IEnumerable<Product> GetProducts();
+        public Product GetProduct(int productId);
     }
 }
